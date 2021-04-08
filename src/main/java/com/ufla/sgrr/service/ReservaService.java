@@ -12,5 +12,4 @@ public interface ReservaService {
     boolean remover(String reservaID) throws BadRequestException;
     List<ReservaDTO> listarReservasPorCPFCliente(String cpf);
     List<ReservaDTO> listarReservasPorCNPJRestaurante(String cnpj);
-    List<ReservaDTO> listarReservas();
 }

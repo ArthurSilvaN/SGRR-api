@@ -33,8 +33,7 @@ public class RestauranteController {
     @DeleteMapping("/{cnpj}")
     @ResponseStatus(HttpStatus.OK)
     public boolean removerRestaurante(@PathVariable String cnpj) throws BadRequestException {
-        String cnpjFormatado = cnpj.replaceAll("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})", "$1.$2.$3/$4-$5");
-        return restauranteService.remover(cnpjFormatado);
+        return restauranteService.remover(cnpj);
     }
 
     @GetMapping
