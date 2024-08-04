@@ -21,13 +21,14 @@ public class ReservaServiceImpl implements ReservaService {
         var reserva = mapper.executar(novaReserva);
 
         repository.save(reserva);
+        novaReserva.setReservaId(reserva.getReservaId());
 
         return novaReserva;
     }
 
     @Override
     public ReservaDTO atualizar(ReservaDTO reservaEditada) {
-        var reservaDesatualizada = repository.findReservaByReservaID(reservaEditada.getReservaID());
+        var reservaDesatualizada = repository.findReservaByReservaId(reservaEditada.getReservaId());
         var reserva = mapper.executar(reservaEditada);
 
         reserva.setId(reservaDesatualizada.getId());
@@ -39,7 +40,7 @@ public class ReservaServiceImpl implements ReservaService {
     @Override
     public boolean remover(String reservaID) throws BadRequestException {
         try {
-            repository.deleteByReservaID(reservaID);
+            repository.deleteByReservaId(reservaID);
             return true;
         } catch (Exception e) {
             throw new BadRequestException();
@@ -48,11 +49,11 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Override
     public List<ReservaDTO> listarReservasPorCPFCliente(String cpf) {
-        return repository.findReservaByClienteID(cpf).stream().map(mapper::executar).toList();
+        return repository.findReservaByClienteId(cpf).stream().map(mapper::executar).toList();
     }
 
     @Override
     public List<ReservaDTO> listarReservasPorCNPJRestaurante(String cnpj) {
-        return repository.findReservaByRestauranteID(cnpj).stream().map(mapper::executar).toList();
+        return repository.findReservaByRestauranteId(cnpj).stream().map(mapper::executar).toList();
     }
 }

@@ -6,11 +6,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface ReservaRepository extends MongoRepository<Reserva, String> {
-    Reserva findReservaByReservaID(String id);
+    Reserva findReservaByReservaId(String id);
 
-    void deleteByReservaID(String id);
+    void deleteByReservaId(String id);
 
-    List<Reserva> findReservaByClienteID(String cpf);
+    List<Reserva> findReservaByClienteId(String cpf);
 
-    List<Reserva> findReservaByRestauranteID(String cnpj);
+    List<Reserva> findReservaByRestauranteId(String cnpj);
 }

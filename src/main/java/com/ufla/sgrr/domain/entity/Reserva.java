@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @Builder
@@ -18,12 +15,12 @@ import java.util.Date;
 public class Reserva {
     @Id
     private String id;
-    private String reservaID;
-    private String clienteID;
-    private String restauranteID;
+    private String reservaId;
+    private String clienteId;
+    private String restauranteId;
     private String data;
     private String horario;
     private int numeroPessoas;
     private String clienteName;
-    private Restaurante restauranteName;
+    private String restauranteName;
 }
