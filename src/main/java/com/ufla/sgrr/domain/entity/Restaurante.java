@@ -17,7 +17,7 @@ public class Restaurante {
     private String id;
     private String nome;
     private String cnpj;
-    private String CEP;
+    private String cep;
     private String endereco;
     private int capacidade;
 }
