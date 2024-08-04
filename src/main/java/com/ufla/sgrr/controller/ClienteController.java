@@ -31,8 +31,8 @@ public class ClienteController {
 
     @DeleteMapping("/{cpf}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerCliente(@PathVariable String cpf) {
-        clienteService.remover(cpf);
+    public boolean removerCliente(@PathVariable String cpf) {
+        return clienteService.remover(cpf);
     }
 
     @GetMapping

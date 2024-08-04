@@ -31,8 +31,8 @@ public class RestauranteController {
 
     @DeleteMapping("/{cnpj}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerRestaurante(@PathVariable String cnpj) {
-        restauranteService.remover(cnpj);
+    public boolean removerRestaurante(@PathVariable String cnpj) {
+        return restauranteService.remover(cnpj);
     }
 
     @GetMapping

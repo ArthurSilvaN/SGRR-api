@@ -31,8 +31,8 @@ public class ReservaController {
 
     @DeleteMapping("/{reservaID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerReserva(@PathVariable String reservaID) {
-        reservaService.remover(reservaID);
+    public boolean removerReserva(@PathVariable String reservaID) {
+        return reservaService.remover(reservaID);
     }
 
     @GetMapping("/cliente/{cpf}")
