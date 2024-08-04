@@ -1,6 +1,7 @@
 package com.ufla.sgrr.service;
 
 import com.ufla.sgrr.domain.dto.ReservaDTO;
+import com.ufla.sgrr.domain.entity.Reserva;
 import org.apache.coyote.BadRequestException;
 
 import java.util.List;

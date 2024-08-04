@@ -21,6 +21,11 @@ public class ClienteServiceImpl implements ClienteService {
     private final ReservaRepository reservaRepository;
 
     @Override
+    public Cliente buscarPorCpf(String cpf) {
+        return repository.findClienteByCpf(cpf);
+    }
+
+    @Override
     public ClienteDTO criar(ClienteDTO novoCliente) {
         if (repository.existsByCpf(novoCliente.getCpf())) {
             throw new IllegalArgumentException("Este email já está em uso.");

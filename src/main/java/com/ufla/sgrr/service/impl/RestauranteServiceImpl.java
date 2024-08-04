@@ -20,6 +20,11 @@ public class RestauranteServiceImpl implements RestauranteService {
     private final MapperRestaurante mapper;
 
     @Override
+    public Restaurante buscarPorCnpj(String cnpj) {
+        return repository.findRestauranteByCnpj(cnpj);
+    }
+
+    @Override
     public RestauranteDTO criar(RestauranteDTO novoRestaurante) {
         if (repository.existsByCnpj(novoRestaurante.getCnpj())) {
             throw new IllegalArgumentException("Este CNPJ já está em uso.");

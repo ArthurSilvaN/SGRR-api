@@ -1,6 +1,7 @@
 package com.ufla.sgrr.service.impl;
 
 import com.ufla.sgrr.domain.dto.ReservaDTO;
+import com.ufla.sgrr.domain.entity.Reserva;
 import com.ufla.sgrr.domain.mapper.MapperReserva;
 import com.ufla.sgrr.repository.ReservaRepository;
 import com.ufla.sgrr.service.ReservaService;
@@ -40,6 +41,7 @@ public class ReservaServiceImpl implements ReservaService {
     @Override
     public boolean remover(String reservaID) throws BadRequestException {
         try {
+            var reserva = repository.findReservaByReservaId(reservaID);
             repository.deleteByReservaId(reservaID);
             return true;
         } catch (Exception e) {
