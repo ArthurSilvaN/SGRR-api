@@ -3,6 +3,7 @@ package com.ufla.sgrr.service.impl;
 import com.ufla.sgrr.domain.dto.RestauranteDTO;
 import com.ufla.sgrr.domain.entity.Restaurante;
 import com.ufla.sgrr.domain.mapper.MapperRestaurante;
+import com.ufla.sgrr.repository.ReservaRepository;
 import com.ufla.sgrr.repository.RestauranteRepository;
 import com.ufla.sgrr.service.RestauranteService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RestauranteServiceImpl implements RestauranteService {
     private final RestauranteRepository repository;
+    private final ReservaRepository reservaRepository;
     private final MapperRestaurante mapper;
 
     @Override
@@ -44,7 +46,9 @@ public class RestauranteServiceImpl implements RestauranteService {
     @Override
     public boolean remover(String cnpj) throws BadRequestException {
         try {
+            var restaurante = repository.findRestauranteByCnpj(cnpj);
             repository.deleteByCnpj(cnpj);
+            reservaRepository.deleteAllByRestauranteId(restaurante.getCnpj());
             return true;
         } catch (Exception e) {
             throw new BadRequestException();

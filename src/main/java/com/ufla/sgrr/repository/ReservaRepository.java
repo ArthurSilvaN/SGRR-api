@@ -10,6 +10,10 @@ public interface ReservaRepository extends MongoRepository<Reserva, String> {
 
     void deleteByReservaId(String id);
 
+    void deleteAllByRestauranteId(String id);
+
+    void deleteAllByClienteId(String id);
+
     List<Reserva> findReservaByClienteId(String cpf);
 
     List<Reserva> findReservaByRestauranteId(String cnpj);

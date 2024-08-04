@@ -4,6 +4,7 @@ import com.ufla.sgrr.domain.dto.ClienteDTO;
 import com.ufla.sgrr.domain.entity.Cliente;
 import com.ufla.sgrr.domain.mapper.MapperCliente;
 import com.ufla.sgrr.repository.ClienteRepository;
+import com.ufla.sgrr.repository.ReservaRepository;
 import com.ufla.sgrr.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ClienteServiceImpl implements ClienteService {
     private final ClienteRepository repository;
     private final MapperCliente mapper;
-    private final PasswordEncoder passwordEncoder;
+    private final ReservaRepository reservaRepository;
 
     @Override
     public ClienteDTO criar(ClienteDTO novoCliente) {
@@ -48,7 +49,9 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public boolean remover(String cpf) throws BadRequestException {
         try {
+            var restaurante = repository.findClienteByCpf(cpf);
             repository.deleteByCpf(cpf);
+            reservaRepository.deleteByReservaId(restaurante.getCpf());
             return true;
         } catch (Exception e) {
             throw new BadRequestException();
