@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -18,8 +19,11 @@ public class Reserva {
     @Id
     private String id;
     private String reservaID;
-    private LocalDateTime data;
+    private String clienteID;
+    private String restauranteID;
+    private String data;
+    private String horario;
     private int numeroPessoas;
-    private Cliente cliente;
-    private Restaurante restaurante;
+    private String clienteName;
+    private Restaurante restauranteName;
 }

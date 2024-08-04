@@ -16,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class ClienteDTO implements Serializable {
     @Serial
-    private static final long serialVersionUID = -6936305490708791436L;
+    private static final long serialVersionUID = 1224164749332824845L;
     private String nome;
     private String cpf;
     private String senha;

@@ -21,10 +21,13 @@ public class MapperReservaImpl implements MapperReserva {
         return Reserva
                 .builder()
                 .reservaID(UUID.randomUUID().toString())
+                .clienteID(reservaDTO.getClienteID())
+                .restauranteID(reservaDTO.getRestauranteID())
                 .numeroPessoas(reservaDTO.getNumeroPessoas())
                 .data(reservaDTO.getData())
-                .cliente(mapperCliente.executar(reservaDTO.getCliente()))
-                .restaurante(mapperRestaurante.executar(reservaDTO.getRestaurante()))
+                .horario(reservaDTO.getHorario())
+                .clienteName(reservaDTO.getClienteName())
+                .restauranteName(reservaDTO.getRestauranteName())
                 .build();
     }
 
@@ -33,10 +36,13 @@ public class MapperReservaImpl implements MapperReserva {
         return ReservaDTO
                 .builder()
                 .reservaID(UUID.randomUUID().toString())
+                .clienteID(reservaDTO.getClienteID())
+                .restauranteID(reservaDTO.getRestauranteID())
                 .numeroPessoas(reservaDTO.getNumeroPessoas())
                 .data(reservaDTO.getData())
-                .cliente(mapperCliente.executar(reservaDTO.getCliente()))
-                .restaurante(mapperRestaurante.executar(reservaDTO.getRestaurante()))
+                .horario(reservaDTO.getHorario())
+                .clienteName(reservaDTO.getClienteName())
+                .restauranteName(reservaDTO.getRestauranteName())
                 .build();
     }
 }

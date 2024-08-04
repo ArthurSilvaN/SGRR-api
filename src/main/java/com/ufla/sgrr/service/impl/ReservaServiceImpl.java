@@ -3,7 +3,6 @@ package com.ufla.sgrr.service.impl;
 import com.ufla.sgrr.domain.dto.ReservaDTO;
 import com.ufla.sgrr.domain.mapper.MapperReserva;
 import com.ufla.sgrr.repository.ReservaRepository;
-import com.ufla.sgrr.repository.RestauranteRepository;
 import com.ufla.sgrr.service.ReservaService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
@@ -49,11 +48,11 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Override
     public List<ReservaDTO> listarReservasPorCPFCliente(String cpf) {
-        return repository.findReservaByCliente_Cpf(cpf).stream().map(mapper::executar).toList();
+        return repository.findReservaByClienteID(cpf).stream().map(mapper::executar).toList();
     }
 
     @Override
     public List<ReservaDTO> listarReservasPorCNPJRestaurante(String cnpj) {
-        return repository.findReservaByRestaurante_Cnpj(cnpj).stream().map(mapper::executar).toList();
+        return repository.findReservaByRestauranteID(cnpj).stream().map(mapper::executar).toList();
     }
 }
