@@ -49,11 +49,11 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Override
     public List<ReservaDTO> listarReservasPorCPFCliente(String cpf) {
-        return repository.findReservaByCliente_CPF(cpf).stream().map(mapper::executar).toList();
+        return repository.findReservaByCliente_Cpf(cpf).stream().map(mapper::executar).toList();
     }
 
     @Override
     public List<ReservaDTO> listarReservasPorCNPJRestaurante(String cnpj) {
-        return repository.findReservaByRestaurante_CNPJ(cnpj).stream().map(mapper::executar).toList();
+        return repository.findReservaByRestaurante_Cnpj(cnpj).stream().map(mapper::executar).toList();
     }
 }

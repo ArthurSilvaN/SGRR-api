@@ -4,8 +4,8 @@ import com.ufla.sgrr.domain.entity.Restaurante;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface RestauranteRepository extends MongoRepository<Restaurante, String> {
-    boolean existsByCNPJ(String CNPJ);
-    boolean deleteByCNPJ(String CNPJ);
+    boolean existsByCnpj(String CNPJ);
+    boolean deleteByCnpj(String CNPJ);
 
-    Restaurante findRestauranteByCNPJ(String CNPJ);
+    Restaurante findRestauranteByCnpj(String CNPJ);
 }

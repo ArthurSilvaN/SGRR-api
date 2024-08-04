@@ -19,7 +19,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 
     @Override
     public RestauranteDTO criar(RestauranteDTO novoRestaurante) {
-        if (repository.existsByCNPJ(novoRestaurante.getCnpj())) {
+        if (repository.existsByCnpj(novoRestaurante.getCnpj())) {
             throw new IllegalArgumentException("Este CNPJ já está em uso.");
         }
 
@@ -31,7 +31,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 
     @Override
     public RestauranteDTO atualizar(RestauranteDTO restauranteEditado) {
-        var restauranteDesatualizado = repository.findRestauranteByCNPJ(restauranteEditado.getCnpj());
+        var restauranteDesatualizado = repository.findRestauranteByCnpj(restauranteEditado.getCnpj());
 
         var restaurante = mapper.executar(restauranteEditado);
         restaurante.setId(restauranteDesatualizado.getId());
@@ -44,7 +44,7 @@ public class RestauranteServiceImpl implements RestauranteService {
     @Override
     public boolean remover(String cnpj) throws BadRequestException {
         try {
-            repository.deleteByCNPJ(cnpj);
+            repository.deleteByCnpj(cnpj);
             return true;
         } catch (Exception e) {
             throw new BadRequestException();

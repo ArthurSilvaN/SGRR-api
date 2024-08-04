@@ -10,7 +10,7 @@ public class MapperClienteImpl implements MapperCliente {
     @Override
     public Cliente executar(ClienteDTO clienteDTO) {
         return Cliente.builder()
-                .CPF(clienteDTO.getCpf())
+                .cpf(clienteDTO.getCpf())
                 .dataNascimento(clienteDTO.getDataNascimento())
                 .email(clienteDTO.getEmail())
                 .nome(clienteDTO.getNome())
@@ -21,7 +21,7 @@ public class MapperClienteImpl implements MapperCliente {
     @Override
     public ClienteDTO executar(Cliente clienteDTO) {
         return ClienteDTO.builder()
-                .cpf(clienteDTO.getCPF())
+                .cpf(clienteDTO.getCpf())
                 .dataNascimento(clienteDTO.getDataNascimento())
                 .email(clienteDTO.getEmail())
                 .nome(clienteDTO.getNome())

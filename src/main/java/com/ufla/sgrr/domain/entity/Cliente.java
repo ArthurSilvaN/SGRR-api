@@ -18,7 +18,7 @@ public class Cliente {
     @Id
     private String id;
     private String nome;
-    private String CPF;
+    private String cpf;
     private String email;
     private String senha;
     private LocalDateTime dataNascimento;
