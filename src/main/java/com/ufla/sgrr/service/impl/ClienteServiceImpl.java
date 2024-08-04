@@ -25,7 +25,6 @@ public class ClienteServiceImpl implements ClienteService {
         }
 
         Cliente cliente = mapper.executar(novoCliente);
-        cliente.setSenha(passwordEncoder.encode(novoCliente.getSenha()));
 
         repository.save(cliente);
 
@@ -38,7 +37,6 @@ public class ClienteServiceImpl implements ClienteService {
 
         Cliente cliente = mapper.executar(clienteEditado);
 
-        cliente.setSenha(passwordEncoder.encode(clienteEditado.getSenha()));
         cliente.setId(clienteDesatualizado.getId());
 
         repository.save(cliente);
