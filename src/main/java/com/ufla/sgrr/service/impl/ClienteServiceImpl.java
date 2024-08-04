@@ -20,7 +20,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteDTO criar(ClienteDTO novoCliente) {
-        if (repository.existsByCPF(novoCliente.getCPF())) {
+        if (repository.existsByCPF(novoCliente.getCpf())) {
             throw new IllegalArgumentException("Este email já está em uso.");
         }
 
@@ -34,7 +34,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteDTO atualizar(ClienteDTO clienteEditado) {
-        Cliente clienteDesatualizado = repository.findClienteByCPF(clienteEditado.getCPF());
+        Cliente clienteDesatualizado = repository.findClienteByCPF(clienteEditado.getCpf());
 
         Cliente cliente = mapper.executar(clienteEditado);
 
