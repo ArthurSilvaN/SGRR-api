@@ -3,6 +3,7 @@ package com.ufla.sgrr.controller;
 import com.ufla.sgrr.domain.dto.ReservaDTO;
 import com.ufla.sgrr.service.ReservaService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{reservaID}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean removerReserva(@PathVariable String reservaID) {
+    @ResponseStatus(HttpStatus.OK)
+    public boolean removerReserva(@PathVariable String reservaID) throws BadRequestException {
         return reservaService.remover(reservaID);
     }
 

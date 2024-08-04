@@ -16,7 +16,7 @@ public class Restaurante {
     @Id
     private String id;
     private String nome;
-    private String CNPJ;
+    private String cnpj;
     private String CEP;
     private String endereco;
     private int capacidade;

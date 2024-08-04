@@ -6,6 +6,7 @@ import com.ufla.sgrr.domain.mapper.MapperRestaurante;
 import com.ufla.sgrr.repository.RestauranteRepository;
 import com.ufla.sgrr.service.RestauranteService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 
     @Override
     public RestauranteDTO criar(RestauranteDTO novoRestaurante) {
-        if (repository.existsByCNPJ(novoRestaurante.getCNPJ())) {
+        if (repository.existsByCNPJ(novoRestaurante.getCnpj())) {
             throw new IllegalArgumentException("Este CNPJ já está em uso.");
         }
 
@@ -30,7 +31,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 
     @Override
     public RestauranteDTO atualizar(RestauranteDTO restauranteEditado) {
-        var restauranteDesatualizado = repository.findRestauranteByCNPJ(restauranteEditado.getCNPJ());
+        var restauranteDesatualizado = repository.findRestauranteByCNPJ(restauranteEditado.getCnpj());
 
         var restaurante = mapper.executar(restauranteEditado);
         restaurante.setId(restauranteDesatualizado.getId());
@@ -41,8 +42,13 @@ public class RestauranteServiceImpl implements RestauranteService {
     }
 
     @Override
-    public boolean remover(String cnpj) {
-        return repository.deleteByCNPJ(cnpj);
+    public boolean remover(String cnpj) throws BadRequestException {
+        try {
+            repository.deleteByCNPJ(cnpj);
+            return true;
+        } catch (Exception e) {
+            throw new BadRequestException();
+        }
     }
 
     @Override

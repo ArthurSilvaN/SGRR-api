@@ -6,6 +6,7 @@ import com.ufla.sgrr.repository.ReservaRepository;
 import com.ufla.sgrr.repository.RestauranteRepository;
 import com.ufla.sgrr.service.ReservaService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,8 +38,13 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public boolean remover(String reservaID) {
-        return repository.deleteByReservaID(reservaID);
+    public boolean remover(String reservaID) throws BadRequestException {
+        try {
+            repository.deleteByReservaID(reservaID);
+            return true;
+        } catch (Exception e) {
+            throw new BadRequestException();
+        }
     }
 
     @Override

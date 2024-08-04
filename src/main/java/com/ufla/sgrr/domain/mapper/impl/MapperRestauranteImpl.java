@@ -14,7 +14,7 @@ public class MapperRestauranteImpl implements MapperRestaurante {
         return RestauranteDTO.builder()
                 .capacidade(restaurante.getCapacidade())
                 .CEP(restaurante.getCEP())
-                .CNPJ(restaurante.getCNPJ())
+                .cnpj(restaurante.getCnpj())
                 .endereco(restaurante.getEndereco())
                 .nome(restaurante.getNome())
                 .build();
@@ -25,7 +25,7 @@ public class MapperRestauranteImpl implements MapperRestaurante {
         return Restaurante.builder()
                 .capacidade(restaurante.getCapacidade())
                 .CEP(restaurante.getCEP())
-                .CNPJ(restaurante.getCNPJ())
+                .cnpj(restaurante.getCnpj())
                 .endereco(restaurante.getEndereco())
                 .nome(restaurante.getNome())
                 .build();

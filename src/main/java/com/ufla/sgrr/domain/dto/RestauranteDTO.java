@@ -18,7 +18,7 @@ public class RestauranteDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1670763661702328467L;
     private String nome;
-    private String CNPJ;
+    private String cnpj;
     private String CEP;
     private String endereco;
     private int capacidade;

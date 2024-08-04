@@ -6,6 +6,7 @@ import com.ufla.sgrr.domain.mapper.MapperCliente;
 import com.ufla.sgrr.repository.ClienteRepository;
 import com.ufla.sgrr.service.ClienteService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,13 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public boolean remover(String cpf) {
-        return repository.deleteByCPF(cpf);
+    public boolean remover(String cpf) throws BadRequestException {
+        try {
+            repository.deleteByCPF(cpf);
+            return true;
+        } catch (Exception e) {
+            throw new BadRequestException();
+        }
     }
 
     @Override
