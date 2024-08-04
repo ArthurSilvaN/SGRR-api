@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface RestauranteRepository extends MongoRepository<Restaurante, String> {
     boolean existsByCnpj(String CNPJ);
-    boolean deleteByCnpj(String CNPJ);
+    void deleteByCnpj(String CNPJ);
 
     Restaurante findRestauranteByCnpj(String CNPJ);
 }

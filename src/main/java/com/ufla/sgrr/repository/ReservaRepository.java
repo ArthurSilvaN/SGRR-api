@@ -8,7 +8,7 @@ import java.util.List;
 public interface ReservaRepository extends MongoRepository<Reserva, String> {
     Reserva findReservaByReservaID(String id);
 
-    boolean deleteByReservaID(String id);
+    void deleteByReservaID(String id);
 
     List<Reserva> findReservaByCliente_Cpf(String cpf);
 

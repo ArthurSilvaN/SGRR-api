@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface ClienteRepository extends MongoRepository<Cliente, String> {
     boolean existsByCpf(String cpf);
     Cliente findClienteByCpf(String cpf);
-    boolean deleteByCpf(String cpf);
+    void deleteByCpf(String cpf);
 }
