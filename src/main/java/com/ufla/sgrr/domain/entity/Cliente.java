@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -21,6 +22,6 @@ public class Cliente {
     private String cpf;
     private String email;
     private String senha;
-    private LocalDateTime dataNascimento;
+    private Date dataNascimento;
     private String telefone;
 }

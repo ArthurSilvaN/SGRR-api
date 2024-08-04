@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @SuperBuilder
@@ -20,6 +21,6 @@ public class ClienteDTO implements Serializable {
     private String cpf;
     private String senha;
     private String email;
-    private LocalDateTime dataNascimento;
+    private Date dataNascimento;
     private String telefone;
 }
