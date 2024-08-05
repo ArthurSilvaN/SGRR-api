@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDTO criar(ClienteDTO novoCliente) {
         if (repository.existsByCpf(novoCliente.getCpf())) {
-            throw new IllegalArgumentException("Este email já está em uso.");
+            throw new IllegalArgumentException("Este cpf já está em uso.");
         }
 
         Cliente cliente = mapper.executar(novoCliente);
