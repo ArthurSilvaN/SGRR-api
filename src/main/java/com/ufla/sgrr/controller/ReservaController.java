@@ -47,4 +47,10 @@ public class ReservaController {
     public List<ReservaDTO> listarReservasPorCNPJRestaurante(@PathVariable String cnpj) {
         return reservaService.listarReservasPorCNPJRestaurante(cnpj);
     }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReservaDTO> listar() {
+        return reservaService.listarReservas();
+    }
 }

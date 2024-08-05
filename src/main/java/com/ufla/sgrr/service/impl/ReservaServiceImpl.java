@@ -58,4 +58,9 @@ public class ReservaServiceImpl implements ReservaService {
     public List<ReservaDTO> listarReservasPorCNPJRestaurante(String cnpj) {
         return repository.findReservaByRestauranteId(cnpj).stream().map(mapper::executar).toList();
     }
+
+    @Override
+    public List<ReservaDTO> listarReservas() {
+        return repository.findAll().stream().map(mapper::executar).toList();
+    }
 }
