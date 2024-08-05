@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 public class AuthController {
     private final AuthService authService;
-    @GetMapping
+
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public AuthDTO logar(@RequestBody AuthDTO auth) {
         return authService.logar(auth);
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     @ResponseStatus(HttpStatus.CREATED)
     public AuthDTO cadastrar(@RequestBody AuthDTO auth) {
         return authService.cadastrar(auth);
