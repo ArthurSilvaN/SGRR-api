@@ -2,6 +2,7 @@ package com.ufla.sgrr.service.impl;
 
 import com.ufla.sgrr.domain.dto.AuthDTO;
 import com.ufla.sgrr.domain.entity.Auth;
+import com.ufla.sgrr.domain.enums.TipoUsuario;
 import com.ufla.sgrr.domain.mapper.MapperAuth;
 import com.ufla.sgrr.domain.mapper.MapperCliente;
 import com.ufla.sgrr.domain.mapper.MapperRestaurante;
@@ -42,14 +43,17 @@ public class AuthServiceImpl implements AuthService {
             case CLIENTE -> {
                 var cliente = clienteService.buscarPorCpf(usuario.getClienteCpf());
                 auth.setCliente(mapperCliente.executar(cliente));
+                auth.setTipoUsuario(TipoUsuario.CLIENTE);
                 return auth;
             }
             case RESTAURANTE -> {
                 var restaurante = restauranteService.buscarPorCnpj(usuario.getRestauranteCnpj());
                 auth.setRestaurante(mapperRestaurante.executar(restaurante));
+                auth.setTipoUsuario(TipoUsuario.RESTAURANTE);
                 return auth;
             }
         }
+        auth.setTipoUsuario(TipoUsuario.ADMINISTRADOR);
         return auth;
     }
 
