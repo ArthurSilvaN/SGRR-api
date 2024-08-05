@@ -56,7 +56,7 @@ public class ClienteServiceImpl implements ClienteService {
         try {
             var restaurante = repository.findClienteByCpf(cpf);
             repository.deleteByCpf(cpf);
-            reservaRepository.deleteByReservaId(restaurante.getCpf());
+            reservaRepository.deleteAllByClienteId(restaurante.getCpf());
             return true;
         } catch (Exception e) {
             throw new BadRequestException();
