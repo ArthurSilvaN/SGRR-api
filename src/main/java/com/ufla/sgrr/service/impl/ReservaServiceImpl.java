@@ -33,6 +33,7 @@ public class ReservaServiceImpl implements ReservaService {
         var reserva = mapper.executar(reservaEditada);
 
         reserva.setId(reservaDesatualizada.getId());
+        reserva.setReservaId(reserva.getReservaId());
         repository.save(reserva);
 
         return reservaEditada;
