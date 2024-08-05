@@ -42,7 +42,6 @@ public class ReservaServiceImpl implements ReservaService {
     @Override
     public boolean remover(String reservaID) throws BadRequestException {
         try {
-            var reserva = repository.findReservaByReservaId(reservaID);
             repository.deleteByReservaId(reservaID);
             return true;
         } catch (Exception e) {
