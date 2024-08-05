@@ -30,7 +30,10 @@ public class AuthServiceImpl implements AuthService {
         cadastrarUsuario(auth);
         AuthDTO novoAuth = new AuthDTO();
         switch (auth.getTipoUsuario()) {
-            case CLIENTE -> novoAuth.setCliente(clienteService.criar(auth.getCliente()));
+            case CLIENTE -> {
+                auth.getCliente().setEmail(auth.getEmail());
+                novoAuth.setCliente(clienteService.criar(auth.getCliente()));
+            }
             case RESTAURANTE -> novoAuth.setRestaurante(restauranteService.criar(auth.getRestaurante()));
         }
         return novoAuth;
